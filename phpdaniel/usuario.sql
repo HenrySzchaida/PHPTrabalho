@@ -1,0 +1,38 @@
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+
+CREATE TABLE `alunos` (
+  `id_jogo` int(11) NOT NULL,
+  `nome` varchar(70) NOT NULL,
+  `anolancamento` char(45) NOT NULL,
+  `tipojogo` varchar(45) NOT NULL,
+  `id_curso` int(45) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+INSERT INTO `alunos` (`id_jogo`, `nome`, `anolancamento`, `tipojogo`, `id_curso`) VALUES
+(7, 'Resident Evil 4 ', '2023-03-24', 'Terror', 4);
+
+
+ALTER TABLE `alunos`
+  ADD PRIMARY KEY (`id_jogo`),
+  ADD KEY `fk_curso` (`id_curso`);
+
+
+ALTER TABLE `alunos`
+  MODIFY `id_jogo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+
+ALTER TABLE `alunos`
+  ADD CONSTRAINT `fk_curso` FOREIGN KEY (`id_curso`) REFERENCES `cursos` (`id_curso`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
